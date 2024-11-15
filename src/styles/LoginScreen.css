@@ -1,0 +1,100 @@
+@import url('https://fonts.googleapis.com/css2?family=Kanit:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Open+Sans:ital,wght@0,300..800;1,300..800&display=swap');
+
+.loginScreen-container{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    background-color: #252422;
+    padding: 2rem;
+    width: 25rem;
+    height: 26rem;
+    border-radius: 30px;
+    margin: 10vh auto;
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+    color: white;
+
+    font-family: "Open Sans", sans-serif;
+}
+
+.input-container form{
+    display: flex;
+    flex-direction: column;
+}
+
+.input-container input {
+    width: 17rem;
+    height: 3rem;
+
+    margin-top: 1rem;
+    border-radius: 15px;
+    border-style: none;
+}
+
+
+
+.Password{
+    margin-bottom: 1.6rem;
+}
+
+.createAcc{
+    margin-bottom: 4rem;
+}
+
+.loginBtn{
+    width: 17.3rem;
+    height: 3rem;
+    border-radius: 30px;
+    border-style: none;
+    
+    background-color: #403D39;
+    transition: 0.3s ease-in;
+    color: black
+}
+
+.loginBtn.active {
+    background-color: #2889EB; /* Active color */
+    cursor: pointer;
+    color: #FFFCF2;
+}
+
+.loginBtn.inactive {
+    background-color: #403D39;
+    cursor: not-allowed;
+}
+
+.signupForm{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+
+.signup-link{
+    color: #2889EB;
+    text-decoration: none;
+    transition: 0.1s ease-in-out;
+}
+
+.signup-link:hover{
+    cursor: pointer;
+    opacity: 0.4;
+}
+
+
+.cancelBtn{
+    width: 2rem;
+    height: 2rem;
+
+}
+
+.cancelBtn:hover{
+    opacity: 0.4;
+    cursor: pointer;
+}
+
+.incorrecCred{
+    color: red;
+}
