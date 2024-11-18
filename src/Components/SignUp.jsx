@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import Navbar from "./NavBar";
-import supabase from "../supabaseClient";
+import { supabase } from "../supabaseClient";
 import { useNavigate } from "react-router-dom";
 
 
@@ -10,6 +10,8 @@ const SignUp = () => {
   const [password, setPassword] = useState("");
   const [error, setError] = useState("");
   const [loading, setLoading] = useState(false);
+
+  
 
   const navigate = useNavigate();
 
@@ -65,7 +67,6 @@ const SignUp = () => {
 
   return (
     <div>
-      <Navbar showLogin={false} />
       <div className="loginScreen-container">
         <h1>Create Account</h1>
         <div className="input-container">

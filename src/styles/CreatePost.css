@@ -1,0 +1,45 @@
+.CreatePost-container{
+    padding-right: 10rem;
+    padding-left: 10rem;
+    
+}
+
+
+.Outside-form-container{
+    padding: 4rem;
+    margin-right: 20rem;
+    margin-left: 20rem;
+    background-color: #252422;
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+    border-radius: 30px;
+    height: 18rem;
+}
+
+.post-container{
+    display: flex; 
+    flex-direction: column; 
+    justify-content: center;
+}
+
+.createTitle{
+    height: 2rem;
+    margin-bottom: 1.6rem;
+}
+
+.createContent{
+    height: 8rem;
+    margin-bottom: 3rem;
+}
+
+
+.CreatePostBtn{
+    border-radius: 20px;
+    height: 3.4rem;
+    width: 12rem;
+
+    margin: 0 auto;
+}
+
+.createContent, .createTitle{
+    border-radius: 12px;
+}

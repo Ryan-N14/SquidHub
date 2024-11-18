@@ -13,6 +13,7 @@ nav{
     color: #FFFCF2;
     font-family: "Open Sans", sans-serif;
     font-size: 14px;
+    
 
     border-bottom: 1px solid gray;
     padding-right: 2rem;
@@ -20,7 +21,7 @@ nav{
     margin-bottom: 2.5rem;
 }
 
-.account-button{
+.account-button, .SignoutBtn{
     /*Login/Sign up button style*/
     width: 7rem;
     height: 3rem;
@@ -29,10 +30,12 @@ nav{
     border-radius: 3rem;
     border-style: none;
     background-color: #2889EB;
-    color: white;
+    color: #FFFCF2;;
     transition: 0.1s ease-in-out;
     font-size: 16px;
 }
+
+
 
 .account-button:hover{
     cursor: pointer;

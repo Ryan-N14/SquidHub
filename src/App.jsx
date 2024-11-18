@@ -1,36 +1,54 @@
-import {useState} from 'react'
+import { useState, useEffect } from "react";
+import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
+import { supabase } from "./supabaseClient";
+
 import "./App.css";
 
 import Navbar from "./Components/NavBar";
-import LoginScreen from './Components/LoginScreen';
-
+import HomePage from "../pages/HomePage";
+import CreatePost from "../pages/CreatePost";
+import LoginScreen from "./Components/LoginScreen";
+import SignUp from "./Components/SignUp";
 
 function App() {
-  const [isLoggedIn, setLogout] = useState(false);
-  const [showLoginScreen, setLoginScreen] = useState(false);
+  const [session, setSession] = useState(null);
 
-  const handleLogin = () =>{
-    setLoginScreen(true)
-  }
+  useEffect(() => {
+    const checkSession = async () => {
+      const {
+        data: { session },
+      } = await supabase.auth.getSession();
+      setSession(session);
+    };
 
-  const closeLogin = () => {
-    setLoginScreen(false);
-  }
+    checkSession();
 
-  const loginSuccess = () => {
-    setLogout(true)
-    setLoginScreen(false);
-  }
+    const {
+      data: { subscription },
+    } = supabase.auth.onAuthStateChange((_event, session) => {
+      setSession(session);
+    });
 
+    return () => subscription.unsubscribe();
+  }, []);
+
+ 
 
   return (
-    <div>
-      <Navbar isLoggedIn={isLoggedIn} handleLogin={handleLogin} showLogin={true}/>
+    <BrowserRouter>
+      <Navbar session={session} />
+      <Routes>
+        <Route path="/" element={<HomePage />} />
+        <Route
+          path="/login"
+          element={!session ? <LoginScreen /> : <Navigate to="/" replace />}
+        />
 
-      {showLoginScreen && (
-        <LoginScreen closeLogin={closeLogin} handleLoginSucess={loginSuccess}/>
-      )}
-    </div>
+        <Route path="/create-post" element={<CreatePost />} />
+
+        <Route path="*" element={<Navigate to="/" replace />} />
+      </Routes>
+    </BrowserRouter>
   );
 }
 

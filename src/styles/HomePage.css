@@ -1,0 +1,116 @@
+.home-main {
+    min-height: 100vh;
+    padding: 20px;
+    box-sizing: border-box;
+}
+  
+.Post-container {
+    display: flex;
+    flex-direction: row;
+    gap: 20px;
+    max-width: 1200px;
+    margin: 0 auto;
+    height: calc(100vh - 100px); /* Adjust based on your navbar height */
+}
+
+.postCard-container {
+    flex: 1;
+    overflow-y: auto;
+    padding-right: 16px; /* Space for scrollbar */
+    /* Hide scrollbar for Chrome, Safari and Opera */
+  
+    
+    /* Hide scrollbar for IE, Edge and Firefox */
+    scrollbar-width: thin;
+    scrollbar-color: #888 #f1f1f1;
+}
+
+.postCard-container::-webkit-scrollbar {
+    width: 6px;
+  }
+  
+  .postCard-container::-webkit-scrollbar-track {
+    background: #f1f1f1;
+  }
+  
+  .postCard-container::-webkit-scrollbar-thumb {
+    background: #888;
+    border-radius: 3px;
+  }
+  
+  .postCard-container::-webkit-scrollbar-thumb:hover {
+    background: #555;
+  }
+
+.postCard {
+    background: black;
+    color: white;
+    border-radius: 8px;
+    padding: 20px;
+    margin-bottom: 16px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.postCard:hover{
+    cursor: pointer;
+}
+  
+  .user-container {
+    width: 250px;
+    background: black;
+    color: white;
+    padding: 20px;
+    border-radius: 8px;
+    height: fit-content;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  }
+  
+  .loading, .no-posts {
+    text-align: center;
+    padding: 20px;
+    color: #666;
+  }
+  
+  /* Optional: Add animations for cards */
+  .postCard {
+    transition: transform 0.2s ease;
+  }
+  
+  .postCard:hover {
+    transform: translateY(-2px);
+  }
+  
+  /* Responsive design */
+  @media (max-width: 768px) {
+    .Post-container {
+      flex-direction: column;
+    }
+    
+    .user-container {
+      width: 100%;
+      order: -1; /* Moves user container to top on mobile */
+    }
+  }
+
+
+.SignoutBtn{
+    width: 6rem;
+    height: 3rem;
+    padding: 0.5rem;
+
+    border-radius: 3rem;
+    border-style: none;
+    background-color: #2889EB;
+    color: #FFFCF2;;
+    transition: 0.1s ease-in-out;
+    font-size: 16px;
+}
+
+.postTitle{
+    font-size: 25px;
+}
+
+.SignoutBtn:hover{
+    cursor: pointer;
+    opacity: 0.8;
+}
