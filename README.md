@@ -33,9 +33,6 @@ The following **optional** features are implemented:
 - [ ] Users can upload images directly from their local machine as an image file
 - [ ] Display a loading animation whenever data is being fetched
 
-The following **additional** features are implemented:
-
-* [ ] List anything else that you added to improve the site's functionality!
 
 ## Video Walkthrough
 
