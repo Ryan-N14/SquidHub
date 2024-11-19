@@ -340,19 +340,6 @@ const ContentPage = () => {
               <div className="title-container">
                 <h1>{content.title}</h1>
               </div>
-              {isOwner && (
-                <div className="post-actions">
-                  <button
-                    onClick={() => setIsEditing(true)}
-                    className="edit-btn"
-                  >
-                    Edit Post
-                  </button>
-                  <button onClick={handleDeletePost} className="delete-btn">
-                    Delete Post
-                  </button>
-                </div>
-              )}
             </div>
             <div className="content-container">
               <p>{content.content}</p>
@@ -362,9 +349,26 @@ const ContentPage = () => {
 
         <div className="upvote-container">
           <p>{upvoteCount} upvotes</p>
-          <button onClick={handleUpvote} disabled={hasUpvoted}>
+          <button
+            onClick={handleUpvote}
+            disabled={hasUpvoted}
+            className="upvoteBtn"
+          >
             {hasUpvoted ? "Upvoted" : "Upvote"}
           </button>
+        </div>
+
+        <div className="EditBtn-container">
+          {isOwner && (
+            <div className="post-actions">
+              <button onClick={() => setIsEditing(true)} className="edit-btn">
+                Edit Post
+              </button>
+              <button onClick={handleDeletePost} className="delete-btn">
+                Delete Post
+              </button>
+            </div>
+          )}
         </div>
       </div>
 
@@ -398,10 +402,11 @@ const ContentPage = () => {
                   <span className="comment-author">
                     {comment.user_id === user?.id
                       ? "You "
-                      : usernames[comment.user_id] || `User ${comment.user_id.slice(0, 8)}`}
+                      : usernames[comment.user_id] ||
+                        `User ${comment.user_id.slice(0, 8)}`}
                   </span>
                   <span className="comment-date">
-                     { new Date(comment.created_at).toLocaleDateString()}
+                    {new Date(comment.created_at).toLocaleDateString()}
                   </span>
                 </div>
                 <p className="comment-content">{comment.content}</p>
