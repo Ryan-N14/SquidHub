@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { supabase } from "../src/supabaseClient";
+import { useNavigate } from "react-router-dom";
 import "../src/styles/HomePage.css";
 
 const HomePage = () => {
@@ -8,12 +9,13 @@ const HomePage = () => {
   const [username, setUsername] = useState("");
   const [isLoading, setIsLoading] = useState(true);
   const [error, setError] = useState(null);
+  const navigate = useNavigate();
 
   useEffect(() => {
     const fetchData = async () => {
       try {
         setIsLoading(true);
-        
+
         // Fetch posts first
         const { data: postData, error: postError } = await supabase
           .from("post")
@@ -22,28 +24,30 @@ const HomePage = () => {
         if (postError) {
           throw postError;
         }
-        
+
         setPost(postData || []);
 
         // Then fetch user data
-        const { data: { user: currentUser } } = await supabase.auth.getUser();
+        const {
+          data: { user: currentUser },
+        } = await supabase.auth.getUser();
         setUser(currentUser);
 
         // If we have a user, fetch their username
-        if (currentUser && sessionStorage.getItem("user_id")) {
+        if (currentUser) {
           const { data: userData, error: userError } = await supabase
             .from("users")
             .select("username")
-            .eq("user_id", sessionStorage.getItem("user_id"))
+            .eq("user_id", currentUser.id)
             .single();
 
           if (userError) {
             console.error("Error fetching username:", userError);
           } else if (userData) {
+            console.log("data", userData);
             setUsername(userData.username);
           }
         }
-
       } catch (err) {
         console.error("Error fetching data:", err);
         setError("Failed to load data");
@@ -53,7 +57,6 @@ const HomePage = () => {
     };
 
     fetchData();
-    
   }, []);
 
   const handleLogout = async () => {
@@ -71,16 +74,46 @@ const HomePage = () => {
     return <div className="error">{error}</div>;
   }
 
+  const handlePostClick = (postId) => {
+    navigate(`/post/${postId}`);
+  };
+
+  const timeSince = (timestamp) => {
+    const now = new Date();
+    const createdAt = new Date(timestamp);
+    const seconds = Math.floor((now - createdAt) / 1000);
+
+    let interval = Math.floor(seconds / 31536000);
+    if (interval >= 1) return `${interval} year${interval > 1 ? 's' : ''} ago`;
+
+    interval = Math.floor(seconds / 2592000);
+    if (interval >= 1) return `${interval} month${interval > 1 ? 's' : ''} ago`;
+
+    interval = Math.floor(seconds / 86400);
+    if (interval >= 1) return `${interval} day${interval > 1 ? 's' : ''} ago`;
+
+    interval = Math.floor(seconds / 3600);
+    if (interval >= 1) return `${interval} hour${interval > 1 ? 's' : ''} ago`;
+
+    interval = Math.floor(seconds / 60);
+    if (interval >= 1) return `${interval} minute${interval > 1 ? 's' : ''} ago`;
+
+    return `${seconds} second${seconds > 1 ? 's' : ''} ago`;
+  };
+
   return (
     <main className="home-main">
       <div className="Post-container">
         <div className="postCard-container">
           {post.length > 0 ? (
             post.map((post) => (
-              <div key={post.id} className="postCard">
-                <h1 className="postTitle">{post.title}</h1>
-                <p>11 Upvotes</p>
-              </div>
+              
+                <div key={post.id} className="postCard" onClick={() => handlePostClick(post.id)}>
+                  <p>{timeSince(post.created_at)}</p>
+                  <h1 className="postTitle">{post.title}</h1>
+                  <p className="upvotes-para">{post.upvotes} Upvotes</p>
+                </div>
+              
             ))
           ) : (
             <p>No posts available</p>
@@ -90,7 +123,6 @@ const HomePage = () => {
         {user && (
           <div className="user-container">
             <h2>Hello, {username}!</h2>
-            <p>Likes: 20</p>
             <button className="SignoutBtn" onClick={handleLogout}>
               Sign out
             </button>

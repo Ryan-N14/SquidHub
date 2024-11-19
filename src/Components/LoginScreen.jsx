@@ -29,8 +29,7 @@ const LoginScreen = ({ closeLogin }) => {
         setPasswordStatus(true);
         console.error("Login error:", loginError.message);
       } else {
-        console.log(data)
-        sessionStorage.setItem("user_id", data.user.id);
+        console.log(data);
         console.log("Successful login");
       }
     } catch (error) {

@@ -43,12 +43,13 @@
   }
 
 .postCard {
-    background: black;
-    color: white;
+    background: aliceblue;
+    color: black;
     border-radius: 8px;
     padding: 20px;
     margin-bottom: 16px;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    opacity: 0.9;
 }
 
 .postCard:hover{
@@ -57,12 +58,13 @@
   
   .user-container {
     width: 250px;
-    background: black;
-    color: white;
+    background: aliceblue;
+    color: black;
     padding: 20px;
     border-radius: 8px;
     height: fit-content;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    opacity: 0.9;
   }
   
   .loading, .no-posts {
@@ -113,4 +115,8 @@
 .SignoutBtn:hover{
     cursor: pointer;
     opacity: 0.8;
+}
+
+.upvotes-para{
+  color:#2889EB;
 }

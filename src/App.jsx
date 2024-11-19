@@ -9,6 +9,8 @@ import HomePage from "../pages/HomePage";
 import CreatePost from "../pages/CreatePost";
 import LoginScreen from "./Components/LoginScreen";
 import SignUp from "./Components/SignUp";
+import ContentPage from "../pages/ContentPage";
+
 
 function App() {
   const [session, setSession] = useState(null);
@@ -31,6 +33,7 @@ function App() {
 
     return () => subscription.unsubscribe();
   }, []);
+  
 
  
 
@@ -44,7 +47,14 @@ function App() {
           element={!session ? <LoginScreen /> : <Navigate to="/" replace />}
         />
 
+        <Route
+          path="/signup"
+          element={!session ? <SignUp /> : <Navigate to="/" replace />}
+        />
+
         <Route path="/create-post" element={<CreatePost />} />
+
+        <Route path="/post/:id" element={<ContentPage/>}/>
 
         <Route path="*" element={<Navigate to="/" replace />} />
       </Routes>

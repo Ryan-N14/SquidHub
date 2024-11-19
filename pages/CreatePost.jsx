@@ -6,6 +6,27 @@ import { useEffect } from "react";
 const CreatePost = () => {
   const [title, setTitle] = useState("");
   const [content, setContent] = useState("");
+  const [userId, setUserId] = useState(null);
+
+
+
+
+
+  useEffect(() => {
+    // Fetch the authenticated user's ID
+    const fetchUserId = async () => {
+      const { data: { user }, error } = await supabase.auth.getUser();
+      if (error) {
+        console.error("Error fetching user:", error.message);
+      } else {
+        console.log("createpost", user?.id)
+        setUserId(user?.id);
+      }
+    };
+
+    fetchUserId();
+  }, []);
+
 
 
   const handlePost = async (e) => {
@@ -15,10 +36,11 @@ const CreatePost = () => {
       return
     }
 
+
     try {
       const { data, error } = await supabase
         .from("post")
-        .insert([{ title: title, content: content, user_id: sessionStorage.getItem("user_id")}]);
+        .insert([{ title: title, content: content, user_id:userId}]);
       
       
       if (error) {

@@ -1,0 +1,23 @@
+.postContent-container{
+    background-color: aliceblue;
+    padding: 2rem;
+    border-radius: 10px;
+
+    width: 65vw;
+    height: 50vh;
+    
+}
+
+.content-container{
+    display: flex;
+    flex-direction: row;
+    gap: 6rem;
+}
+
+.comment-container{
+    background-color: aliceblue;
+    border-radius: 10px;
+    width: 35vw;
+    padding: 2rem;
+
+}
