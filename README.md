@@ -38,7 +38,7 @@ The following **optional** features are implemented:
 
 Here's a walkthrough:
 
-<img src='https://i.giphy.com/media/v1.Y2lkPTc5MGI3NjExdG9pbWVwcGVoeTl2YXhieWliNW1ocW5oaGE1cnE2eGxuNjdla3E2NCZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/5N8axeDYwYRhECI9Wi/giphy.gif' title='Video Walkthrough' width='' alt='Video Walkthrough' />
+<img src='https://i.giphy.com/media/v1.Y2lkPTc5MGI3NjExZGdvdDlqbnpwMjFoZGtpeXl3cjFxN2N6ZGI2MmhrczUzNG5pOXNocyZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/MqFymt9HilmChzT9rH/giphy.gif' title='Video Walkthrough' width='' alt='Video Walkthrough' />
 
 <!-- Replace this with whatever GIF tool you used! -->
 GIF created with LICEcap...  
