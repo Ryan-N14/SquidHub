@@ -1,12 +1,8 @@
 # Web Development Final Project - *SquidHub*
 
-Submitted by: **Ryan Nguyen**
-
 This web app: **SquidHub is web application made for bikers to communcate and ask each other questions. The term "Squid" refers to a beginner rider**
 
-Time spent: **12** hours spent in total
-
-## Required Features
+## Features
 
 The following **required** functionality is completed:
 
